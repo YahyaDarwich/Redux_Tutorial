@@ -17,8 +17,8 @@ class Counter extends React.Component {
   }
 }
 
+// It receives the entire store state, and return an object of data this component needs.
 // It is called every time the store state changes.
-// It receives the entire store state, and should return an object of data this component needs.
 function mapStateToProps(state) { // state returned from reducer
   return {
     counter: state.counter,
@@ -27,8 +27,10 @@ function mapStateToProps(state) { // state returned from reducer
 
 function mapDispatchToProps(dispatch) {
   return {
+    // dispatching plain actions
     increment: () => dispatch({ type: "INCREMENT" }), // dispatch take an action (a javaScript object)
                                                       // each action must have a property (type)
+                                                      // Each field in the object will become a separate prop
     decrement: () => dispatch({ type: "DECREMENT" }),
     reset: () => dispatch({ type: "RESET" }),
   };
